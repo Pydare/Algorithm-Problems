@@ -3,7 +3,7 @@ class Node:
         self.info = value
         self.link = None
 
-class SingleLikedList:
+class SingleLinkedList:
     def __init__(self):
         self.start = None
 
