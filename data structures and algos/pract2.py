@@ -123,3 +123,17 @@ class DoubleLinkedList:
                 p.prev.next = None
             else:
                 print(f'{x} is not found')
+
+    def reverse(self):
+        if self.start is None:
+            return
+        p1 = self.start
+        p2 = p1.next
+        p1.next = None
+        p1.prev = p2
+        while p2 is not None:
+            p2.prev = p2.next
+            p2.next = p1
+            p1 = p2
+            p2 = p2.prev
+        self.start = p1
