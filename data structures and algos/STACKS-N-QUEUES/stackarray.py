@@ -31,34 +31,34 @@ class Stack:
     def display(self):
         print(self.items)
 
-st = Stack()
-st = Stack()
-while True:
-    print('1. Push')
-    print('2. Pop')
-    print('3. Peek')
-    print('4. Size')
-    print('5. Display')
-    print('6. Quit')
+if __name__ == '__main__':
+    st = Stack()
+    while True:
+        print('1. Push')
+        print('2. Pop')
+        print('3. Peek')
+        print('4. Size')
+        print('5. Display')
+        print('6. Quit')
 
-    choice = int(input('Enter the operation you want to carry out: '))
-    if choice == 1:
-        data = int(input('Enter element to be pushed: '))
-        st.push(data)
-    elif choice == 2:
-        x = st.pop()
-        print(f'The popped item is {x}')
-    elif choice == 3:
-        x = st.peek()
-        print(f'The peek element is {x}')
-    elif choice == 4:
-        x = st.size()
-        print(f'The size of the list is {x}')
-    elif choice == 5:
-        st.display()
-    elif choice == 6:
-        break
-    else:
-        print('Wrong option selected')
+        choice = int(input('Enter the operation you want to carry out: '))
+        if choice == 1:
+            data = int(input('Enter element to be pushed: '))
+            st.push(data)
+        elif choice == 2:
+            x = st.pop()
+            print(f'The popped item is {x}')
+        elif choice == 3:
+            x = st.peek()
+            print(f'The peek element is {x}')
+        elif choice == 4:
+            x = st.size()
+            print(f'The size of the list is {x}')
+        elif choice == 5:
+            st.display()
+        elif choice == 6:
+            break
+        else:
+            print('Wrong option selected')
 
     

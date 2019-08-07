@@ -2,43 +2,59 @@ class Node:
     def __init__(self, value):
         self.info = value
         self.link = None
+
 class Queue:
     def __init__(self):
-        self.front = None
         self.rear = None
-        self.size_queue = 0
     def is_empty(self):
-        return self.front == None
+        return self.rear == None
     def size(self):
-        return self.size_queue
+        if self.is_empty():
+            return 0
+        n = 0
+        p = self.rear.link
+        while True:
+            n += 1
+            p = p.link
+            if p == self.rear.link:
+                break
+        return n
     def enqueue(self, data):
         temp = Node(data)
-        if self.front == None:
-            self.front = temp
+        if self.is_empty():
+            self.rear = temp
+            self.rear.link = self.rear
         else:
+            temp.link = self.rear.link
             self.rear.link = temp
-        self.rear = temp
-        self.size_queue += 1
+            self.rear = temp
     def dequeue(self):
         if self.is_empty():
-            print('The list is empty')
-        x = self.front.info
-        self.front = self.front.ink
-        self.size_queue -= 1
-        return x
+            print('The list is empty unfortunately')
+        if self.rear.link == self.rear: #list has only one node
+            temp = self.rear
+            self.rear = None
+        else:
+            temp = self.rear.link
+            self.rear.link = self.rear.link.link
+        return temp.info
+
     def peak(self):
         if self.is_empty():
-            print('The list is empty') 
-        return self.front.info
+            print('The list is empty, do something about it before I snap')
+            return
+        print('The peak of the list is ', self.rear.link.info)
+    
     def display(self):
         if self.is_empty():
             print('The list is empty')
             return
-        print('The queue is: ')
-        p = self.front
-        while p is not None:
-            print(p.info, ' ', end='')
+        p = self.rear.link
+        while True:
+            print(p.info, ' ', end = '')
             p = p.link
+            if p == self.rear.link:
+                break
         print()
 
 qu = Queue()
