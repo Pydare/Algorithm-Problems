@@ -23,7 +23,7 @@ class Queue:
         if self.is_empty():
             print('The list is empty')
         x = self.front.info
-        self.front = self.front.ink
+        self.front = self.front.link
         self.size_queue -= 1
         return x
     def peak(self):

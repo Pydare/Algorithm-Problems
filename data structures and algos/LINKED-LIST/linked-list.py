@@ -201,7 +201,7 @@ class SingleLinkedList:
             return None
         slowR = self.start
         fastR = self.start
-        while fastR is not None and fastR is not None:
+        while slowR is not None and fastR is not None:
             slowR = slowR.link
             fastR = fastR.link.link
             if slowR == fastR:
