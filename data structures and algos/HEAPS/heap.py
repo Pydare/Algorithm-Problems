@@ -46,6 +46,7 @@ class Heap:
             self.a[i] = self.a[lchild]
             i = lchild
         self.a[i] = k
+    
 
     def display(self):
         if self.n == 0:

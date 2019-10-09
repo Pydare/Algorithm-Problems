@@ -1,4 +1,4 @@
-class Node:
+ class Node:
     def __init__(self, value):
         self.info = value
         self.next = None
@@ -58,8 +58,11 @@ class LinkedList:
         temp.next = None
         p.next = self.head
         self.head = p
-    def intersection(self,l1,l2):
-        l3 = LinkedList()
+    def reverseKGroup(self,k):
+        p = self.head
+        if p is None:
+            return
+        
         
         
 

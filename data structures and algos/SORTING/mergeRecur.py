@@ -36,7 +36,7 @@ def merge(a,temp,low1,up1,low2,up2):
         temp[k] = a[j]
         j+=1
         k+=1
-
+ 
 def copy(a,temp,low,up):
     for i in range(low,up+1):
         a[i] = temp[i]
