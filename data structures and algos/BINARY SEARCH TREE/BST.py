@@ -24,7 +24,7 @@ class BinarySearchTree:
 
     def insert1(self,x):
         p = self.root
-        par = None
+        par = None 
         while p is not None:
             par = p
             if x < p.info:
@@ -121,7 +121,12 @@ class BinarySearchTree:
                 s = s.lchild
             p.info = s.info #copying the successor into node to be deleted
             p = s
-            par = ps
+            par = ps #previous parent of inorder successor turns to parent of last one to be delted
+            
+            
+            '''trying to be consistent with the use of p and par incase 
+            case A, B, or C occurs'''
+
             if p.lchild is not None:
                 ch = p.lchild
             else p.rchild is not None:
