@@ -76,6 +76,14 @@ class BinaryTree:
             return 1 + hL
         else:
             return 1 + hR
+    def invert_tree(self):
+        self.__invert(self.root)
+    def __invert(self,p):
+        if p is None:
+            return
+        self.__invert(p.lchild)
+        self.__invert(p.rchild)
+        p.lchild, p.rchild = p.rchild, p.lchild
     def create_tree(self):
         self.root = Node('p')
         self.root.lchild = Node('q')
@@ -91,23 +99,23 @@ bt = BinaryTree()
 
 bt.create_tree()
 
-bt.display()
-print()
+# bt.display()
+# print()
 
-print('Preorder: ')
-bt.preorder()
-print('')
-
+# print('Preorder: ')
+# bt.preorder()
+# print('')
+bt.invert_tree()
 print('Inorder: ')
 bt.inorder()
 print()
 
-print('Postorder: ')
-bt.postorder()
-print()
+# print('Postorder: ')
+# bt.postorder()
+# print()
 
-print('Level order:')
-bt.levelorder()
-print()
+# print('Level order:')
+# bt.levelorder()
+# print()
 
 print('Height of the tree is ',bt.height())

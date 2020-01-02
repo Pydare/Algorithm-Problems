@@ -1,5 +1,5 @@
 class Heap:
-    def __init__(self, maxSize=10):
+    def __init__(self,maxSize=10):
         self.a = [None]*maxSize
         self.n = 0
         self.a[0] = 99999
@@ -9,12 +9,12 @@ class Heap:
         self.restore_up(self.n)
     def restore_up(self,i):
         k = self.a[i]
-        iparent = i // 2
-        while self.a[iparent] < k: #no sentinel - while(iparent>=1 && self.a[iparent]<k)
+        iparent = i//2
+        while self.a[iparent] < k:
             self.a[i] = self.a[iparent]
             i = iparent
-            iparent = i //2
-        self.a[i] = k 
+            iparent = i//2
+        self.a[i] = k
     def delete_root(self):
         if self.n == 0:
             print('Heap is empty')
@@ -23,10 +23,11 @@ class Heap:
         self.n -= 1
         self.restore_down(1)
         return maxValue
-    def restore_down(self, i):
+    def restore_down(self,i):
         k = self.a[i]
         lchild = 2*i
-        rchild = lchild+1
+        rchild = lchild + 1
+
         while rchild <= self.n:
             if k >= self.a[lchild] and k >= self.a[rchild]:
                 self.a[i] = k
@@ -39,24 +40,31 @@ class Heap:
                     self.a[i] = self.a[rchild]
                     i = rchild
             lchild = 2*i
-            rchild = lchild+1
-            
+            rchild = lchild = 1
         #if number of nodes is even
         if lchild == self.n and k < self.a[lchild]:
             self.a[i] = self.a[lchild]
             i = lchild
         self.a[i] = k
-    
-
     def display(self):
         if self.n == 0:
-            print('Heap is empty')
+            print('The heap is empty')
             return
-        print('Heap size = ', self.n)
-        for i in range(1,self.n+1):
-            print(self.a[i], ' ', end = ' ')
+        print('Heap size is ',self.n)
+        for i in range(1,self.n +1):
+            print(self.a[i], ' ', end=' ')
         print()
 
+class Solution:
+    def mergeKsorted(self,a,b,c):
+        n = len(a)
+        output = [None] *3*n
+        self.insert(a[0])
+        self.insert(b[0])
+        self.insert(c[0])
+
+
+############################################33
 h = Heap(20)
 while True:
     print('1. Insert')
@@ -66,7 +74,7 @@ while True:
     print('Enter your choice: ')
     choice = int(input('Enter your choice: '))
 
-    if choice == 1:
+    if choice==1:
         value = int(input('Enter the value to be inserted: '))
         h.insert(value)
     elif choice == 2:
@@ -77,6 +85,3 @@ while True:
         break
     else:
         print('Wrong choice')
-
-
-

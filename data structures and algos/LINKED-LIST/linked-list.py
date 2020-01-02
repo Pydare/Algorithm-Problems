@@ -18,6 +18,14 @@ class SingleLinkedList:
                 print(p.info,' ', end=' ')
                 p = p.link
             print()
+    #display in reverse order
+    def displayRecur(self):
+        _displayRecur(self.root)
+    def _displayRecur(self, p):
+        if p is None:
+            return
+        _displayRecur(p.next)
+        print(p.info)
     def count_nodes(self):
         p = self.start
         n = 0
@@ -259,16 +267,19 @@ class SingleLinkedList:
             prev.link = px
         else:
             print(x, ' not present in the list')
-    def merge2(self,list2):
-        pass
-    def _merge2(self,p1,p2):
-        pass
-    def merge_sort(self):
-        pass
-    def _merge_sort__rec(self,listStart):
-        pass
-    def _divide_list(self,p):
-        pass
+    def reverse(self):
+        if self.start is None:
+            return
+        self.reverseUtil(self.start,None)
+    def reverseUtil(self,p,prev):
+        #mark last node as head
+        if p.next is None:
+            self.head = p
+            p.next = prev
+            return
+        next_ = p.next
+        p.next = prev
+        self.reverseUtil(next_,p)
 
 ###############################################################
 
