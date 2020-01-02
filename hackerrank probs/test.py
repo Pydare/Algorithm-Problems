@@ -23,7 +23,9 @@
 
 
 
-
+if n not in d:
+        d[n] = n    
+    return fib(n)
 
 
 
