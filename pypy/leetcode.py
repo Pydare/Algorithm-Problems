@@ -10,8 +10,9 @@ def twoSum(nums, target):
             break
     n.append(a)
     n.append(b)
-    print(n)
+    print(d)
         
+twoSum([2, 7, 11, 15], 9)
 
 
 
@@ -28,5 +29,4 @@ def twoSum(nums, target):
 #     print(n)
             
 
-twoSum([2, 7, 11, 15], 9)
         
