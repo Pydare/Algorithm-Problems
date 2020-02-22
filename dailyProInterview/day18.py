@@ -10,3 +10,7 @@ def removeConsecutiveSumTo0(l):
     return indices 
 
 print(removeConsecutiveSumTo0([10,5,-3,-3,1,4,-4]))
+
+Given a  list of integers, remove all consecutive nodes that sum up to 0.
+Input: [10,5,-3,-3,1,4,4]
+Output: 10

@@ -11,3 +11,5 @@ def moveZeros(nums):
 
 
 print(moveZeros([0,1,0,3,12]))
+
+
