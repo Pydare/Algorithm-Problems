@@ -1,3 +1,5 @@
-l = [23,45,67,83,13,56]
-for i in range(1,len(l)-1):
-    print(l[i])
+amount = 5
+
+dp_table = [ float('inf') for _ in range(amount+1) ]
+
+print(dp_table)

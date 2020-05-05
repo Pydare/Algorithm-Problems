@@ -1,21 +1,3 @@
-class Node:
-    def __init__(self,val):
-        self.val = val
-        self.left = None
-        self.right = None
+d = {1:1,2:2,30:3}
 
-
-def delelteNode(root,x):
-    #first step is looking for x
-    if root.val == x:
-        root = None
-        return root
-    p = root
-    while p is not None:
-        if x < p.val:
-            p = p.left
-        elif x > p.val:
-            p = p.right
-        else:
-            print(x, ' has been found')
-    
+print(d.)
