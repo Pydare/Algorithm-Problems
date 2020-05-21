@@ -1,5 +1,5 @@
-amount = 5
+from collections import Counter
 
-dp_table = [ float('inf') for _ in range(amount+1) ]
+d = Counter([2,2,2,3,3,3,4,4,4])
 
-print(dp_table)
+print(dict(d))
