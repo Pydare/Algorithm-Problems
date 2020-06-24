@@ -2,7 +2,7 @@ def spiralOrder(matrix):
     
     m, n = len(matrix), len(matrix[0])
     visited = [[False for _ in range(n)] for _ in range(m)]
-    directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]
+    directions = [(0, 1), (1, 0), (0, -1), (-1, 0)]  #[right,down,left,up]
     res = []
     def dfs(x, y, d):
         visited[x][y] = True
