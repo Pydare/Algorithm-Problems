@@ -112,16 +112,16 @@ class BinarySearchTree:
             s = p.rchild
 
             while s.lchild is not None:
-                ps = s
+                ps = s 
                 s = s.lchild
             p.info = s.info
             p = s
             par = ps
         #case b and case a: 1 or no child
-        if p.lchild is not None: #node to be deleted has left child
+        if p.lchild : #node to be deleted has left child 
             ch = p.lchild
         else:       #node to be deleted has right child or no child
-            ch = p.rchild
+            ch = p.rchild #ch could be right or none
         if par == None: #node to be deleted is root node
             self.root = ch
         elif p == par.lchild:  #node is left child of its parent
@@ -154,3 +154,14 @@ class BinarySearchTree:
                     ch = p.rchild
                 p = ch
         return p 
+
+
+"""
+delete a node in a binary search tree
+
+            50
+           /   \ 
+          40    70
+         / \    / \ 
+        30  45 60 80
+"""

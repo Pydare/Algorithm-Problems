@@ -2,12 +2,13 @@ def permute(s):
     s = [i for i in s]
 
     def helper(s,temp):
+        print(s,temp)
         #base case
         if not s:
             print(''.join(temp))
         else:
             for i in range(len(s)):
-                #choose
+                #choose 
                 c = s[i]
                 temp.append(c)
                 s.remove(c)
@@ -19,4 +20,4 @@ def permute(s):
 
     helper(s,[])
 
-print(permute('DARE'))
+print(permute('ABC'))
