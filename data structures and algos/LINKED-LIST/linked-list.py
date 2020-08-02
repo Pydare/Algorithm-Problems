@@ -238,7 +238,7 @@ class SingleLinkedList:
         while p!=q:
             len_rem_list+=1
             p=p.link
-            q==q.link
+            q=q.link
         print('Number of nodes not included in the cycle are ',len_rem_list)
         length_list = len_cycle + len_rem_list
         print('Length of list is ', length_list)

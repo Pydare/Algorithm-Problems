@@ -118,13 +118,14 @@ class DoubleLinkedList(object):
             self.start = None
         else:
             print(x, ' not found')
-        return
+            return
 
         #deletion of first node
         if self.start.info == x:
             self.start = self.start.next
             self.start.prev = None
             return
+            
         p = self.start.next
         while p.next is not None:
             if p.info == x:

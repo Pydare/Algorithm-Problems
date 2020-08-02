@@ -43,5 +43,3 @@ class Solution(object):
 
         # Return the clone of the node from visited.
         return visited[node]
-
-
