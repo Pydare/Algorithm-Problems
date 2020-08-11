@@ -33,7 +33,7 @@ class CircularLinkedList:
         temp = Node(data)
         temp.link = self.last.link
         self.last.link = temp
-        self.last temp
+        self.last = temp
 
     def create_list(self):
         n = int(input('Enter your number of nodes: '))
@@ -42,7 +42,7 @@ class CircularLinkedList:
         data = int(input('Enter the elements to be entered: '))
         self.insert_emptylist(data)
 
-        for i in range(n-1):
+        for _ in range(n-1):
             data = int(input('Enter the elements to be entered: '))
             self.insert_end(data)
 

@@ -154,3 +154,8 @@ class DoubleLinkedList(object):
             p1 = p2
             p2 = p2.prev
         self.start = p1
+
+        '''
+        1<-2<->3<->4<->5
+        p1  p2
+        '''

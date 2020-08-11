@@ -18,14 +18,7 @@ class SingleLinkedList:
                 print(p.info,' ', end=' ')
                 p = p.link
             print()
-    #display in reverse order
-    def displayRecur(self):
-        _displayRecur(self.root)
-    def _displayRecur(self, p):
-        if p is None:
-            return
-        _displayRecur(p.next)
-        print(p.info)
+
     def count_nodes(self):
         p = self.start
         n = 0
@@ -244,7 +237,7 @@ class SingleLinkedList:
         print('Length of list is ', length_list)
 
         p = self.start
-        for i in range(length_list):
+        for _ in range(length_list):
             p = p.link
         p.link = None
 
@@ -257,13 +250,13 @@ class SingleLinkedList:
         px = None
         prev = None
 
-        while p is None:
+        while p is not None:
             if p.info == x:
                 px = p
             prev = p
             p = p.link
 
-        if px is None:
+        if px is not None:
             prev.link = px
         else:
             print(x, ' not present in the list')

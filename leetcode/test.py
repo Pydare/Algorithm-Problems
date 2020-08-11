@@ -1,4 +1,5 @@
-from collections import Counter
-c = Counter([1,1,2,2,3,3,4,4])
-for i in c:
-    print(i)
+a = "tea"
+l = [3,2,1]
+b = sorted(a)
+c = l.sort()
+print(b)
