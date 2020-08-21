@@ -95,6 +95,37 @@ class SingleLinkedList:
             p = nxt
         self.head = prev
 
+    def reverse_between(self,m,n):
+        if not self.head:
+            return None
+
+        #move 2 pointers until they reach the proper starting point
+        cur, prev = self.head, None
+        while m > 1:
+            prev = cur
+            cur = cur.next
+            m, n = m-1, n-1
+
+        tail, con = cur, prev
+
+        #iteratively reverse the nodes until n becomes 0
+        while n:
+            third = cur.next
+            cur.next = prev
+            prev = cur
+            cur = third
+            n -= 1
+
+        #adjust the final connections
+        if con:
+            con.next = prev
+        else:
+            head = prev
+            
+        tail.next = cur
+        return self.head
+
+
     def reverse_recur(self):
 
         def helper(p,prev):

@@ -1,13 +1,10 @@
-d = {5:4,2:3,1:1,6:2}
-l = [4,56,7,1,10]
-m = [(5,4), (2,3), (1,1), (6,2)]
-import heapq
-k = 2
-res = heapq.nlargest(k, d.keys(), key=d.get)
-res2 = heapq.nlargest(k,l)
-#print(res)
+def maxAreaIsland(grid):
+    seen = set()
 
-ids = {1:[]}
-visited = {user:False for user in ids[1]}
-l.remove(10)
-print(l)
+    def area(r,c):
+        if not (0 <= r < len(grid)) and 0 <= c < len(grid[0]) and (r,c) not in seen and grid[r][c]:
+            return 0
+        seen.add((r,c))
+        return 1 + area(r+1,c) + area(r-1,c) + area(r,c-1) + area(r,c+1)
+
+    return max(area(r,c) for r in range(len(grid)) for c in range(len(grid[0])))
