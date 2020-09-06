@@ -1,3 +1,3 @@
-l = [1,2,3,4,5,6]
-l.insert(2,10)
-print(l)
+S = "abbcccddddaaaaa"
+r = zip(*[(k,len(list(grp))) for k,grp in itertools.groupby(S)])
+print(list(r))

@@ -1,4 +1,5 @@
 #DFS
+#assuming g is a defaultdict
 def cycle_exists(g):
     marked = {u:False for u in g}
     found_cycle = [False]
@@ -20,6 +21,7 @@ def dfs_visit(g,u,found_cycle,pred_node,marked):
             return
         if not marked[v]:
             dfs_visit(g,v,found_cycle,u,marked)
+
 
 
 #BFS

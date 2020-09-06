@@ -23,7 +23,7 @@ class Graph:
 
     def is_cyclic(self):
 
-        #allocate memory for creating V subsets and initialize all subsets as singke element sets
+        #allocate memory for creating V subsets and initialize all subsets as single element sets
         parent = [-1]*(self.V)
 
         #iterate through all edges of graph, find subset of both vertices
@@ -35,3 +35,4 @@ class Graph:
                 if x==y:
                     return True
                 self.union(parent,x,y)
+        return False 

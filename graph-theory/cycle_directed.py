@@ -55,7 +55,7 @@ def is_DAG(graph,N):
 
 
 
-#DFS-2 geekforgeeks
+#DFS-2 geekforgeeks 
 from collections import defaultdict
 
 class Graph2:
@@ -66,7 +66,7 @@ class Graph2:
     def add_edge(self,u,v):
         self.graph[u].append(v)
 
-    def is_cyclic_helper(self,v,visited,recstack):
+    def dfs_visit(self,v,visited,recstack):
         
         #mark current node as visited and adds to recursion stack
         visited[v] = True
@@ -75,7 +75,7 @@ class Graph2:
         #recur for all neighbors, if any neighbor is visited and in recstack, graph is cyclic
         for neighbor in self.graph[v]:
             if not visited[neighbor]:
-                if self.is_cyclic_helper(neighbor,visited,recstack):
+                if self.dfs_visit(neighbor,visited,recstack):
                     return True
             elif recstack[neighbor]:
                 return True
@@ -90,7 +90,7 @@ class Graph2:
 
         for node in range(self.V):
             if not visited[node]:
-                if self.is_cyclic_helper(node,visited,recstack):
+                if self.dfs_visit(node,visited,recstack):
                     return True
 
         return False
