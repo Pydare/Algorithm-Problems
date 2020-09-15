@@ -73,3 +73,114 @@ def BFS(graph,src,N):
 
     #else no cycle is found
     return False
+
+###################latest cycle detection from graph valid tree
+from collections import defaultdict
+def valid_tree(n,edges):
+    if len(edges) != n-1: return False
+    adj_list = defaultdict(list)
+
+    for x,y in edges:
+        adj_list[x].append(y)
+        adj_list[y].append(x)
+    
+    parent = {0:-1}
+    stack = [0]
+
+    while stack:
+        node = stack.pop()
+        for nei in adj_list[node]:
+            if nei == parent[node]:
+                continue
+            if nei in parent:
+                return False
+            parent[nei] = node
+            stack.append(nei)
+    
+    return len(parent) == n 
+
+def valid_tree_recur(n,edges):
+    if len(edges) != n-1: 
+        return False
+    adj_list = defaultdict(list)
+
+    for x,y in edges:
+        adj_list[x].append(y)
+        adj_list[y].append(x)
+
+    seen = set()
+    def dfs(node,parent):
+        if node in seen: 
+            return
+        seen.add(node)
+        for nei in adj_list[node]:
+            if nei == parent:
+                continue
+            if nei in seen:
+                return False
+            result = dfs(nei,node)
+            if not result: 
+                return False 
+        return True
+
+    return dfs(0,-1) and len(seen) == n
+
+#advanced dfs
+def valid_tree_adv(n,edges):
+    if len(edges) != n-1: return False
+
+    adj_list = defaultdict(list)
+    for x,y in edges:
+        adj_list[x].append(y)
+        adj_list[y].append(x)
+
+    seen = set()
+
+    def dfs(node):
+        if node in seen:
+            return
+        seen.add(node)
+        for nei in adj_list[node]:
+            dfs(nei)
+    dfs(0)
+    return len(seen) == n 
+
+##################################3
+#UNION FIND SOLUTION
+class UnionFind:
+    def __init__(self,n):
+        self.parent = [-1 for _ in range(n)]
+        self.size = [1]*n
+
+    def find(self,A):
+        if self.parent[A] == -1:
+            return A
+        else:
+            self.parent[A] = self.find(self.parent[A])
+            return self.parent[A]
+
+    def union(self,A,B):
+        root_A = self.find(A)
+        root_B = self.find(B)
+
+        if root_A == root_B:
+            return False
+        if self.size[root_A] < self.size[root_B]:
+            self.parent[root_A] = root_B
+            self.size[root_B] += self.size[root_A]
+        else:
+            self.parent[root_B] = root_A
+            self.size[root_A] += self.size[root_B]
+        return True
+
+class Solution3:
+    def valid_tree(self,n,edges):
+        if len(edges) != n-1: return False
+
+        union_find = UnionFind(n)
+
+        for x,y in edges:
+            if not union_find.union(x,y):
+                return False
+
+        return True

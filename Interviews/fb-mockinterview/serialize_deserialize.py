@@ -4,45 +4,45 @@ class Node:
         self.left = self.right = None
 
 from collections import deque
-def serialize(root):
-    res = []
+def serialize(self, root):    
+    if not root: 
+        return ""
     q = deque([root])
-
-    if not root:
-        return ''
-
+    res = []
     while q:
         node = q.popleft()
-
         if node:
-            res.append(str(node.val))
             q.append(node.left)
             q.append(node.right)
+            res.append(str(node.val))
         else:
-            res.append('null')
+            res.append("null")
     return ','.join(res)
+            
 
-def deserialize(word):
-    word = word.split(',')
-    
-    if  len(word) == 0:
+def deserialize (self, data):
+    if not data: 
         return None
     
-    q = deque([Node(word[0])])
-    i = 1
+    data = data.split(',')
+    root = Node(int(data[0]))
+    q = deque([root])
+    idx = 1
+    
     while q:
         node = q.popleft()
-        
-        if word[i] != 'null':
-            node.left = Node(word[i])
+        if data[idx] != 'null':
+            node.left = Node(int(data[idx]))
             q.append(node.left)
-        
-        i += 1
-
-        if word[i] != 'null':
-            node.right = Node(word[i])
+            
+        idx += 1
+    
+        if data[idx] != 'null':
+            node.right = Node(int(data[idx]))
             q.append(node.right)
-        i += 1
+            
+        idx += 1
+        
     return root
 
 def serialize2(root):

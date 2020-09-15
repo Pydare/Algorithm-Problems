@@ -1,7 +1,7 @@
 class Board:
     def __init__(self,n):
         self.n = n
-        self.board = [["-" for _ in range(self.n)] for _ in range(self.n)]
+        self.board = [[0 for _ in range(self.n)] for _ in range(self.n)]
 
     def is_safe(self,row,column):
         #checking the rows
@@ -52,8 +52,7 @@ def queens_helper(board,column):
                 board.place(row,column)
 
                 #explore
-                flag = queens_helper(board,column+1)
-                if flag:
+                if queens_helper(board,column+1)
                     return True
 
                 #unchoose

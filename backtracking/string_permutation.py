@@ -20,4 +20,28 @@ def permute(s):
 
     helper(s,[])
 
-print(permute('ABC'))
+def permute_optimised(s):
+    s= list(s)
+    res = []
+    def helper(s,idx):
+        if idx == len(s):
+            res.append(''.join(s))
+        else:
+            for i in range(idx,len(s)):
+                #choose
+                s[i], s[idx] = s[idx], s[i]
+                helper(s,idx+1)
+                s[i], s[idx] = s[idx], s[i]
+    helper(s,0)
+    return res
+
+print(permute_optimised('abc'))
+
+##itertools way
+from itertools import permutations
+perm_list = permutations('ABC')
+for perm in perm_list:
+    print(''.join(perm))
+
+
+#print(permute_optimised('ABC'))
