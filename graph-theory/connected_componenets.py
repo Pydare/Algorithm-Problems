@@ -26,6 +26,27 @@ def count_components(n,edges):
     return ret
 
 
+##########CONNECTED COMPONENTS FOR ADJACENCY MATRIX##############
+def findCircleNum(M):
+        
+    n,m = len(M),len(M[0])
+    count = 0
+    visited = [0]*m
+    
+    def dfs(i):
+        for j in range(m):
+            if M[i][j] == 1 and visited[j] == 0:
+                visited[j] = 1
+                dfs(j)
+    
+    for i in range(n):
+        if visited[i] == 0:
+            dfs(i)
+            count += 1
+            
+    return count
+
+
 
     
     
