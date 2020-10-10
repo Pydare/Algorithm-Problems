@@ -55,7 +55,7 @@ def is_DAG(graph,N):
 
 
 
-#DFS-2 geekforgeeks 
+#DFS-2 geekforgeeks ---> BEST GUY FOR THE JOB
 from collections import defaultdict
 
 class Graph2:

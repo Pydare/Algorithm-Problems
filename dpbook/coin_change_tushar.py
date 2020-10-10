@@ -17,3 +17,4 @@ def min_coins(coins,target):
 
 ans = min_coins([1,2,3], 9)
 print(ans)
+

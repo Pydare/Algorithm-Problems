@@ -10,7 +10,7 @@ class WordDictionary:
     def add_word(self,word):
         ptr = self.root
         for symbol in word:
-            ptr = ptr.children.setdefault(symbol,TrieNode())
+            ptr = ptr.children.setdefault(symbol,TrieNode()) #setdefault sets key val pair if not in dict and returns the value, else it returns the value
         ptr.end_node = True
 
     def delete(self,word):

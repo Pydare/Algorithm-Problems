@@ -25,6 +25,29 @@ def count_components(n,edges):
 
     return ret
 
+##connected components in an undirected graph ---> BEST GUY FOR THE JOB
+from collections import defaultdict
+def countComponents(n,edges):
+        
+    def dfs(node):
+        seen.add(node)
+        for nei in adj_list[node]:
+            if nei not in seen:
+                dfs(nei)
+                
+    adj_list = defaultdict(list)
+    for u,v in edges:
+        adj_list[u].append(v)
+        adj_list[v].append(u)
+        
+    seen = set()
+    count = 0
+    for node in range(n):
+        if node not in seen:
+            dfs(node)
+            count += 1
+    return count
+
 
 ##########CONNECTED COMPONENTS FOR ADJACENCY MATRIX##############
 def findCircleNum(M):

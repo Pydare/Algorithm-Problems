@@ -14,7 +14,7 @@ def k_smallest(random,k):
     res = random[:k]
     heapq.heapify(res) 
 
-    for num in (random[k:]):
+    for num in (random[k:]): #[57,90]
         if num > res[0]:
             heapq.heappop(res)
             heapq.heappush(res,num)

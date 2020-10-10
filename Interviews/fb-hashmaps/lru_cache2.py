@@ -1,24 +1,25 @@
 class Node:
-    def __init__(self,key,value):
+    def __init__(self,key,val):
         self.key = key
-        self.value = value
-        self.next = self.prev = None
+        self.val = val
+        self.next = None
+        self.prev = None
 
-class Dll:
+class DLL:
     def __init__(self):
         self.head = Node(-1,-1)
-        self.tail = Node(-1,1)      #head<->(-1,-1) ... (-1,-1)<->tail
+        self.tail = Node(-1,-1)
         self.head.next = self.tail
         self.tail.prev = self.head
         self.count = 0
 
     def remove_node(self,node):
-        pre,nxt = node.prev, node.next
+        pre, nxt = node.prev, node.next
         pre.next, nxt.prev = nxt, pre
 
     def add_node(self,node):
-        node.next = self.head.next
         node.prev = self.head
+        node.next = self.head.next
         self.head.next.prev = node
         self.head.next = node
 
@@ -29,33 +30,24 @@ class Dll:
     def insert(self,node):
         self.add_node(node)
         self.count += 1
-        return node #return node to add it to a hashmap
+        #return node
 
     def remove_last(self):
         last = self.tail.prev
         self.remove_node(last)
         self.count -= 1
-        return last #return node to remove it to a hashmap
-
+        return last
 
 class LRUCache:
     def __init__(self,capacity):
-        self.dll = Dll()
+        self.dll = DLL()
         self.dic = {}
         self.cap = capacity
-
-    def get(self,key):
-        if key in self.dic:
-            node = self.dic[key]
-            self.dll.update(node)
-            return node.value
-        else:
-            return -1
 
     def put(self,key,value):
         if key in self.dic:
             node = self.dic[key]
-            node.value = value
+            node.val = value
             self.dll.update(node)
         else:
             if self.dll.count == self.cap:
@@ -64,3 +56,11 @@ class LRUCache:
             node = Node(key,value)
             self.dic[key] = node
             self.dll.insert(node)
+
+    def get(self,key):
+        if key in self.dic:
+            node = self.dic[key]
+            self.dll.update(node)
+            return node.val
+        else:
+            return -1

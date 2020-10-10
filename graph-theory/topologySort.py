@@ -1,3 +1,7 @@
+"""
+used in cyclic detection of directed graphs
+"""
+
 from collections import defaultdict, deque
 class Graph:
     def __init__(self):
