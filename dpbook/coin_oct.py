@@ -32,6 +32,9 @@ def min_coins_top_dow(total,coins,map_):
     #memoize the minimum for current total
     map_[total] = min_val
     return min_val
+map_ = [0]*11
+res = min_coins_top_dow(10,[3,5,2],map_)
+print(res)
 
 
 """

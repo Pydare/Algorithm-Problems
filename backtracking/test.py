@@ -1,25 +1,17 @@
-def evalRPN(tokens):
-    stack = []
-        
-    for ch in tokens:
-        print(stack)
-        if ch.isdigit():
-            stack.append(int(ch))
-        elif ch in ["+","-","*","/"]:
-            operator = ch
-            r = tokens.pop()
-            l = tokens.pop()
-            if operator == "+":
-                res = l+r
-            elif operator == "-":
-                res = l-r
-            elif operator =="/":
-                res = l//r
-            else:
-                res = l*r
-            stack.append(res)
-            
-    return stack.pop()
 
-ans = evalRPN(["2", "1", "+", "3", "*"])
-print(ans)
+value = 0
+li = []
+ 
+def recuision(n):
+    #global value,li
+    #Total number of records
+    value += n
+         #List records what numbers
+    li.append(n)
+         #Or change to this sentence li = [n], record the number of the last recursive process
+    if(n == 1):
+        return 1
+    else:
+        return n * recuision(n-1)
+print(recuision(4))
+ 

@@ -27,3 +27,10 @@ def merge(arr):
 arr = [5,3,4,1,2,10,50,6,9,43,52,7,55,100,90]
 res = merge(arr)
 print(res)
+
+
+#################################################################
+from itertools import product
+m,n = 4,5
+borders = list(product(range(m),[0,n-1])) + list(product([0,m-1],range(n)))
+print(borders)

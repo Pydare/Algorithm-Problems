@@ -1,4 +1,4 @@
-class StackEmptyError:
+class StackEmptyError(Exception):
     pass
 class StackFullError:
     pass
