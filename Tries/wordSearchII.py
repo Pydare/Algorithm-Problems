@@ -9,6 +9,7 @@ def find_words(board,words):
             node = node.setdefault(letter,{})
         #mark the existence of a word in trie node
         node[WORD_KEY] = word 
+        print(trie)
 
     row_num, col_num = len(board), len(board[0])
     matched_words = []
@@ -50,3 +51,8 @@ def find_words(board,words):
                 backtracking(row,col,trie)
 
     return matched_words
+
+board = [["o","a","a","n"],["e","t","a","e"],["i","h","k","r"],["i","f","l","v"]]
+words = ["oath","pea","eat","rain"]
+res = find_words(board, words)
+print(res)

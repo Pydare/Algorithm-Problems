@@ -7,10 +7,10 @@ class Trie:
     def __init__(self):
         self.root = Node()
 
-    def char_to_int(self,character):
-        return ord(character)-ord('a')
+    def char_to_int(self, character):
+        return ord(character) - ord('a')
 
-    def remove(self,string):
+    def remove(self, string):
         ptr = self.root
         length = len(string)
         for idx in range(length):
@@ -24,7 +24,7 @@ class Trie:
         ptr.is_end = False
         return 
 
-    def insert(self,string):
+    def insert(self, string):
         ptr = self.root
         length = len(string)
         for idx in range(length):
@@ -36,7 +36,7 @@ class Trie:
                 ptr = ptr.children[i]
         ptr.is_end = True
 
-    def search(self,string):
+    def search(self, string):
         ptr = self.root
         length = len(string)
         for idx in range(length):
@@ -49,7 +49,7 @@ class Trie:
             return False
         return True
 
-    def get_all(self,ptr,key,key_list):
+    def get_all(self, ptr, key, key_list):
         if ptr is None:
             key_list.append(key)
             return 
@@ -57,9 +57,9 @@ class Trie:
             key_list.append(key)
         for i in range(26):
             if ptr.children[i] is not None:
-                self.get_all(ptr.children[i],key+chr(ord('a')+i),key_list) 
+                self.get_all(ptr.children[i], key+chr(ord('a')+i), key_list) 
 
-    def search_by_prefix(self,key):
+    def search_by_prefix(self, key):
         ptr = self.root
         key_list = []
         length = len(key)
@@ -69,6 +69,6 @@ class Trie:
                 ptr = ptr.children[i]
             else:
                 return None
-        self.get_all(ptr,key,key_list)
+        self.get_all(ptr, key, key_list)
         return key_list
 

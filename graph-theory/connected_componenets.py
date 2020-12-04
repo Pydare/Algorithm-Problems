@@ -52,7 +52,7 @@ def countComponents(n,edges):
 ##########CONNECTED COMPONENTS FOR ADJACENCY MATRIX##############
 def findCircleNum(M):
         
-    n,m = len(M),len(M[0])
+    n, m = len(M), len(M[0])
     count = 0
     visited = [0]*m
     
