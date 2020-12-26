@@ -97,12 +97,41 @@ class Graph2:
 
 g = Graph2(4)
 g.add_edge(0,1)
-g.addEdge(0, 2) 
-g.addEdge(1, 2) 
-g.addEdge(2, 0) 
-g.addEdge(2, 3) 
-g.addEdge(3, 3) 
-if g.isCyclic() == 1: 
-    print "Graph has a cycle"
+g.add_edge(0, 2) 
+g.add_edge(1, 2) 
+g.add_edge(2, 0) 
+g.add_edge(2, 3) 
+g.add_edge(3, 3) 
+if g.is_cyclic() == 1: 
+    print("Graph has a cycle")
 else: 
-    print "Graph has no cycle"
+    print("Graph has no cycle")
+
+
+def direct_cycle_detection(n, edges):
+    adj_list = defaultdict(set)
+    visited = defaultdict(int)
+
+    for x, y in edges:
+        adj_list[x].add(y)
+
+    def dfs_cycle(node):
+        visited[node] = -1
+        for nei in adj_list[node]:
+            if visited[node] == 0:
+                if dfs_cycle(nei):
+                    return True
+            elif visited[node] == -1:
+                return True
+        
+        visited[node] = 1
+        return False
+
+    for i in range(n):
+        if not visited[i]:
+            # there's a cycle found
+            if dfs_cycle(i):
+                return True
+    
+    # no cycle found
+    return False

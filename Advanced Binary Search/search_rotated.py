@@ -1,5 +1,5 @@
 class Solution:
-    def search(self, nums: List[int], target: int) -> bool:
+    def search(self, nums, target: int) -> bool:
         n = len(nums)
         if n == 0:
             return False

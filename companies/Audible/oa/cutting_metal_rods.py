@@ -3,10 +3,10 @@ def max_profit(cutting_cost, sale_price, rods, cutting_size):
     total_rods = len(rods)
     for i in range(total_rods):
         if rods[i]%cutting_size == 0:
-            profit+=(sale_price * rods[i]-(rods[i] // cutting_size-1) * cutting_cost)
+            profit += (sale_price * rods[i]-(rods[i] // cutting_size-1) * cutting_cost)
 
         else:
-            profit+=(sale_price * (rods[i] - rods[i] % cutting_size) - (rods[i] // cutting_size)* cutting_cost)
+            profit += (sale_price * (rods[i] - rods[i] % cutting_size) - (rods[i] // cutting_size)* cutting_cost)
 
 
     return profit

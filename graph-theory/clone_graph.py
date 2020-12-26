@@ -51,12 +51,13 @@ class Soulution2:
             n = q.popleft()
             #iterate through neighbors of the node
             for neighbor in n.neighbors:
-                #clone the neighbor and put in the visited
-                visited[neighbor] = Node(neighbor.val,[])
-                #add the newly encountered node to the queue
-                q.append(neighbor)
-            #add the clone of the neighbor to the neighbors of the clone node n
-            visited[n].neighbors.append(visited[neighbor])
+                if neighbor not in visited:
+                    #clone the neighbor and put in the visited
+                    visited[neighbor] = Node(neighbor.val,[])
+                    #add the newly encountered node to the queue
+                    q.append(neighbor)
+                #add the clone of the neighbor to the neighbors of the clone node n
+                visited[n].neighbors.append(visited[neighbor])
 
         #return the clone of the node from visited
         return visited[node]

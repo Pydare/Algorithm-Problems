@@ -97,7 +97,7 @@ def valid_tree(n,edges):
             parent[nei] = node
             stack.append(nei)
     
-    return len(parent) == n 
+    return len(parent) == n # If the graph is fully connected, then every node must have been seen
 
 def valid_tree_recur(n,edges):
     if len(edges) != n-1: 
@@ -123,7 +123,7 @@ def valid_tree_recur(n,edges):
                 return False 
         return True
 
-    return dfs(0,-1) and len(seen) == n
+    return dfs(0,-1) and len(seen) == n # If the graph is fully connected, then every node must have been seen
 
 #advanced dfs
 def valid_tree_adv(n,edges):
@@ -143,9 +143,9 @@ def valid_tree_adv(n,edges):
         for nei in adj_list[node]:
             dfs(nei)
     dfs(0)
-    return len(seen) == n 
+    return len(seen) == n # If the graph is fully connected, then every node must have been seen
 
-##################################3
+##################################
 #UNION FIND SOLUTION
 class UnionFind:
     def __init__(self,n):
