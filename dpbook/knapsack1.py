@@ -22,7 +22,7 @@ example: W=6, values=[10,15,40], weights=[1,2,3]
 """
 
 # recursive solution
-def maximum_values(values,weights,W,n):
+def maximum_values(values, weights, W, n):
     
     # base case
     if n == 0 or W == 0:
@@ -33,21 +33,22 @@ def maximum_values(values,weights,W,n):
     # then this item cannot be included 
     # in the optimal solution
     if weights[n-1] > W:
-        return maximum_values(values,weights,W,n-1) #skipping that weight
+        return maximum_values(values, weights, W, n-1) # skipping that weight
 
     # return the maximum of two cases: 
     # (1) nth item included 
     # (2) not included
     else:
-        return max(values[n-1] + maximum_values(values,weights,W-weights[n-1],n-1), maximum_values(values,weights,W,n-1))
+        return max(values[n-1] + maximum_values(values, weights, W-weights[n-1], n-1), maximum_values(values, weights, W, n-1))
 
 
 
 # memoized solution of the recursive solution
 
-def max_values_memo(values,weights,W,n):
+def max_values_memo(values, weights, W, n):
     memo = [[-1 for _ in range(W+1)] for _ in range(n+1)]
-    def helper(values,weights,W,n):
+
+    def helper(values, weights, W, n):
         # base case
         if n == 0 or W == 0:
             return 0
@@ -55,23 +56,23 @@ def max_values_memo(values,weights,W,n):
             return memo[n][W]
 
         if weights[n-1] > W:
-            memo[n][W] = helper(values,weights,W,n-1)
+            memo[n][W] = helper(values, weights, W, n-1)
             return memo[n][W]
         else:
-            memo[n][W] = max(values[n-1] + helper(values,weights,W-weights[n-1],n-1), helper(values,weights,W,n-1))
+            memo[n][W] = max(values[n-1] + helper(values, weights, W-weights[n-1], n-1), helper(values, weights, W, n-1))
             return memo[n][W]
 
-    return helper(values,weights,W,n)
+    return helper(values, weights, W, n)
 
 
 # dp solution
-def max_values_dp(values,weights,W):
+def max_values_dp(values, weights, W):
 
-    dp = [[0 for _ in range(W+1)] for _ in range(len(weights)+1)]
+    dp = [[0 for _ in range(W + 1)] for _ in range(len(weights) + 1)]
     m, n = len(dp), len(dp[0])
 
-    for i in range(1,m):
-        for j in range(1,n):
+    for i in range(1, m):
+        for j in range(1, n):
             if j < weights[i-1]:
                 dp[i][j] = dp[i-1][j]
             else:

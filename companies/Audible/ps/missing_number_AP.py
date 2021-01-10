@@ -11,7 +11,7 @@ def missingNumber2(arr):
     n = len(arr)
     diff = (arr[-1] - arr[0]) // n
     lo, hi = 0, n
-    while lo < hi:
+    while lo < hi: # 5,7,11,13
         mid = (lo + hi) >> 1 # or lo+hi//2
         if arr[mid] == arr[0] + (mid * diff):
             lo = mid + 1

@@ -12,9 +12,9 @@ def serialize(self, root):
     while q:
         node = q.popleft()
         if node:
+            res.append(str(node.val))
             q.append(node.left)
             q.append(node.right)
-            res.append(str(node.val))
         else:
             res.append("null")
     return ','.join(res)
@@ -50,13 +50,13 @@ def serialize2(root):
         return ""
 
     data = []
-    def helper(root):
-        if not root:
+    def helper(node):
+        if not node:
             data.append('null')
             return 
-        data.append(str(root.val))
-        helper(root.left)
-        helper(root.right)
+        data.append(str(node.val))
+        helper(node.left)
+        helper(node.right)
     helper(root)
     return ','.join(data)
 
@@ -72,9 +72,6 @@ def deserialize2(data):
 
             left, idx = decoder(idx+1)
             right, idx = decoder(idx+1)
-
-            root.left = left
-            root.right = right
         else:
             root = None
         return root, idx

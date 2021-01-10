@@ -1,20 +1,20 @@
-def longest_common_subsequence(s,t):
-    m,n = len(s), len(t)
+def longest_common_subsequence(s, t):
+    m, n = len(s), len(t)
     memo = [[-1 for _ in range(m)] for _ in range(n)]
-    def helper(s,t,m,n):
+    def helper(s, t, m, n):
         if m == 0 or n == 0:
             return 0
         if memo[m][n] != -1:
             return memo[m][n]
-        #comparing the last character of recursion
+        # comparing the last character of recursion
         if s[m-1] == t[n-1]:
-            memo[m][n] =  1 + helper(s,t,m-1,n-1)
+            memo[m][n] =  1 + helper(s, t, m-1, n-1)
         else:
-            memo[m][n] = max(helper(s,t,m,n-1), helper(s,t,m-1,n))
+            memo[m][n] = max(helper(s, t, m, n-1), helper(s, t, m-1, n))
 
         return memo[m][n]
 
-    return helper(s,t,m,n)
+    return helper(s, t, m, n)
 
 #DP solution
 def lcs_dp(s,t):

@@ -54,7 +54,7 @@ def find_pages(pages,students):
 
     return res
 
-def is_possible2(pages,n,students,mid):
+def is_possible2(pages,n,students,mid): # [12,34,67,90] 113
     students_required = 1
     curr_sum = 0
 

@@ -30,7 +30,7 @@ def countPS(string):
     # return total palindromic subsequence
     return cps[0][N - 1]
 
-ans = countPS("abcdef")
+ans = countPS("xxxayyy")
 print(ans)
 
 

@@ -21,6 +21,7 @@ def set_rows_cols(matrix):
         for j in range(C):
             matrix[0][j] = 0
 
+    # checking for first column
     if is_col:
         for i in range(R):
             matrix[i][0] = 0
