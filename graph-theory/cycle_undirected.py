@@ -76,11 +76,11 @@ def BFS(graph,src,N):
 
 ###################latest cycle detection from graph valid tree ---> BEST GUY FOR THE JOB
 from collections import defaultdict
-def valid_tree(n,edges):
+def valid_tree(n, edges):
     if len(edges) != n-1: return False
     adj_list = defaultdict(list)
 
-    for x,y in edges:
+    for x, y in edges:
         adj_list[x].append(y)
         adj_list[y].append(x)
     
@@ -90,26 +90,26 @@ def valid_tree(n,edges):
     while stack:
         node = stack.pop()
         for nei in adj_list[node]:
-            if nei == parent[node]:
+            if nei == parent[node]: # to avoid the self cycle of undirected graphs
                 continue
             if nei in parent:
                 return False
-            parent[nei] = node
+            parent[nei] = node # we're killing 2 birds with 1 stone by considering the immediate neighbor as the value, and using all values as a set
             stack.append(nei)
     
     return len(parent) == n # If the graph is fully connected, then every node must have been seen
 
-def valid_tree_recur(n,edges):
+def valid_tree_recur(n, edges):
     if len(edges) != n-1: 
         return False
     adj_list = defaultdict(list)
 
-    for x,y in edges:
+    for x, y in edges:
         adj_list[x].append(y)
         adj_list[y].append(x)
 
     seen = set()
-    def dfs(node,parent):
+    def dfs(node, parent):
         if node in seen: 
             return
         seen.add(node)
@@ -118,12 +118,12 @@ def valid_tree_recur(n,edges):
                 continue
             if nei in seen:
                 return False
-            result = dfs(nei,node)
+            result = dfs(nei, node)
             if not result: 
                 return False 
         return True
 
-    return dfs(0,-1) and len(seen) == n # If the graph is fully connected, then every node must have been seen
+    return dfs(0, -1) and len(seen) == n # If the graph is fully connected, then every node must have been seen
 
 #advanced dfs
 def valid_tree_adv(n,edges):
@@ -148,23 +148,23 @@ def valid_tree_adv(n,edges):
 ##################################
 #UNION FIND SOLUTION
 class UnionFind:
-    def __init__(self,n):
+    def __init__(self, n):
         self.parent = [-1 for _ in range(n)]
-        self.size = [1]*n
+        self.size = [1] * n
 
-    def find(self,A):
+    def find(self, A):
         if self.parent[A] == -1:
             return A
         else:
             self.parent[A] = self.find(self.parent[A])
             return self.parent[A]
 
-    def union(self,A,B):
+    def union(self, A, B):
         root_A = self.find(A)
         root_B = self.find(B)
 
         if root_A == root_B:
-            return False
+            return False # shows the cycle, they belong to the same set
         if self.size[root_A] < self.size[root_B]:
             self.parent[root_A] = root_B
             self.size[root_B] += self.size[root_A]
@@ -174,13 +174,13 @@ class UnionFind:
         return True
 
 class Solution3:
-    def valid_tree(self,n,edges):
+    def valid_tree(self, n, edges):
         if len(edges) != n-1: return False
 
         union_find = UnionFind(n)
 
-        for x,y in edges:
-            if not union_find.union(x,y):
+        for x, y in edges:
+            if not union_find.union(x, y):
                 return False
 
         return True

@@ -66,31 +66,31 @@ class Graph2:
     def add_edge(self,u,v):
         self.graph[u].append(v)
 
-    def dfs_visit(self,v,visited,recstack):
+    def dfs_visit(self, v, visited, recstack):
         
-        #mark current node as visited and adds to recursion stack
+        # mark current node as visited and adds to recursion stack
         visited[v] = True
         recstack[v] = True
 
-        #recur for all neighbors, if any neighbor is visited and in recstack, graph is cyclic
+        # recur for all neighbors, if any neighbor is visited and in recstack, graph is cyclic
         for neighbor in self.graph[v]:
             if not visited[neighbor]:
-                if self.dfs_visit(neighbor,visited,recstack):
+                if self.dfs_visit(neighbor, visited, recstack):
                     return True
             elif recstack[neighbor]:
                 return True
 
-        #the node needs to be popped from recursion stack before function ends
+        # the node needs to be popped from recursion stack before function ends
         recstack[v] = False
         return False
 
     def is_cyclic(self):
-        visited = [False]*self.V
-        recstack = [False]*self.V
+        visited = [False] * self.V
+        recstack = [False] * self.V
 
         for node in range(self.V):
             if not visited[node]:
-                if self.dfs_visit(node,visited,recstack):
+                if self.dfs_visit(node, visited, recstack):
                     return True
 
         return False
@@ -110,21 +110,21 @@ else:
 
 def direct_cycle_detection(n, edges):
     adj_list = defaultdict(set)
-    visited = defaultdict(int)
+    visited = defaultdict(int) # 0 when not visited
 
     for x, y in edges:
         adj_list[x].add(y)
 
     def dfs_cycle(node):
-        visited[node] = -1
+        visited[node] = -1 # currently in rectack & visited, -1
         for nei in adj_list[node]:
-            if visited[node] == 0:
+            if visited[node] == 0: # has not been visited
                 if dfs_cycle(nei):
                     return True
-            elif visited[node] == -1:
+            elif visited[node] == -1: # node is in recursion stack
                 return True
         
-        visited[node] = 1
+        visited[node] = 1 # 1 when visited & not in stack
         return False
 
     for i in range(n):

@@ -35,3 +35,6 @@ class Solution(object):
                   
       #if not all letters are in output, that means there was a cycle and so no valid ordering
       return "".join(output) if len(output) == len(indegree) else ""
+
+ans = Solution().alienOrder(["wrt","wrf","er","ett","rftt"])
+print(ans)

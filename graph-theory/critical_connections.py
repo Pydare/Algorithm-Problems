@@ -5,7 +5,44 @@ In DFS tree, a vertex u is articulation point if one of the following two condit
 """
 from collections import defaultdict
 class Solution:
-    def criticalConnections(self, n: int, connections: List[List[int]]) -> List[List[int]]:
+    def criticalConnections(self, n: int, connections):
+        
+        res = []
+
+        i = 0
+        while i < n:
+            temp_edges = connections[:i] + connections[i+1:]
+            adj_list = defaultdict(list)
+
+            for x, y in temp_edges:
+                adj_list[x].append(y)
+                adj_list[y].append(x)
+
+            if not self.is_connected(adj_list, n):
+                res.append(connections[i])
+
+            i += 1
+
+        return res
+    
+    def is_connected(self, adj_list, n):
+        seen = set()
+        count = 0
+
+        def dfs(i):
+            seen.add(i)
+            for nei in adj_list[i]:
+                if nei not in seen:
+                    dfs(nei)
+
+        for i in range(n):
+            if i not in seen:
+                dfs(i)
+                count += 1
+
+        return count == 1
+
+    def criticalConnectionsOptimal(self, n: int, connections):
         graph = defaultdict(list)
         for v in connections:
             graph[v[0]].append(v[1])
